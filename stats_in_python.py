@@ -52,7 +52,7 @@ def calculate_variance(numbers:list)->float:
     sum_square_difference = 0
     # Get sum of the square difference
     for number in numbers:
-        sum_square_difference += (number - avg) ** 2
+        sum_square_difference += math.pow((number - avg),2)
     
     variance = sum_square_difference / (n - 1)
     return variance
@@ -61,7 +61,7 @@ def calculate_std_dev(numbers:list)->float:
     # TODO - Complete the function to return the standard deviation of the numbers in the list
 
     # Standard deviation is the square root of the variance
-    return (calculate_variance(numbers))**0.5
+    return math.pow((calculate_variance(numbers)), 0.5)
 
 def calculate_median(number:list)->float:
     # TODO - Complete the function to return the median of the numbers in the list
