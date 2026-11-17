@@ -1,4 +1,4 @@
-# Introductio to Python for Bioinformatics
+# BINF 5007 Introductio to Python for Bioinformatics
 # Assignment 2: Descriptive Statistics in Python
 
 This project reads tab-delimited data files and calculates descriptive statistics for the numeric values in a selected column. The command-line interface is `CLI.py`; the statistics and file-loading functions are provided by `stats_in_python.py`.
