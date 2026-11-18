@@ -8,7 +8,6 @@ def load_data(filepath:str, column:int)->tuple[list, int]:
 
     # Get the filename for error messages
     filename = filepath.split("/")[-1]
-    print(filename)
     list_values = []
     # For total values in column, valid and invalid
     total_number_of_values = 0
