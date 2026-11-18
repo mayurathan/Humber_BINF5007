@@ -89,3 +89,41 @@ def calculate_median(number:list)->float:
         left = number[n//2 - 1]
         median = (right + left) / 2
     return median
+
+# Instruction 8
+def print_data(filepath:str, column):
+
+    # Get the filename
+    filename = filepath.split("/")[-1]
+    print(filename)
+    print(f"Column: {column}")
+
+    # Load the data
+    data = load_data(filepath, column)
+
+    number_list = data[0]
+    count = data[1]
+    ValidNum = len(number_list)
+    average = calculate_average(number_list)
+    max_min = get_max_and_min(number_list)
+    variance = calculate_variance(number_list)
+    stdev = calculate_std_dev(number_list)
+    median = calculate_median(number_list)
+
+    
+    print(f"\tCount = {count:.3f}")
+    print(f"\tValidNum = {ValidNum:.3f}")
+    print(f"\tAverage = {average:.3f}")
+    print(f"\tMaximum = {max_min[0]:.3f}")
+    print(f"\tMinimum = {max_min[1]:.3f}")
+    print(f"\tVariance = {variance:.3f}")
+    print(f"\tStd Dev = {stdev:.3f}")
+    print(f"\tMedian = {median:.3f}")
+
+# Print the data, Comment out if using CLI.py
+#print_data("files/data_file.txt", 3)
+#print_data("files/data_file2.txt", 3)
+#print_data("files/data_file3.txt", 3) # Program will exit
+#print_data("files/data_file3.txt", 10) # Program will exit
+#print_data("files/data_file3.txt", 1)
+#print_data("files/data_file2.txt", 4)
