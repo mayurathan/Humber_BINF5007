@@ -6,7 +6,11 @@ def load_data(filepath:str, column:int)->tuple[list, int]:
     # The function returns a tuple that contains the list of values and the total number 
     # of values in the column
 
+    # Get the filename for error messages
+    filename = filepath.split("/")[-1]
+    print(filename)
     list_values = []
+    # For total values in column, valid and invalid
     total_number_of_values = 0
     with open(filepath, "r") as file:
         for line in file:
@@ -14,25 +18,28 @@ def load_data(filepath:str, column:int)->tuple[list, int]:
             try:
                 value = row_values[column]
                 number = float(value)
+                total_number_of_values += 1
+                # Skip infinity values and NaN
                 if math.isfinite(number):
                     list_values.append(number)
-                    total_number_of_values += 1
             except ValueError:
                 pass
             except IndexError:
-                print("Column number is invalid")
+                print(f"Exiting: There is no valid \'list index\' in column {column} in line {total_number_of_values + 1} in file:{filename}")
                 exit()
+        
+        # Exit if the list is empty
+        if not list_values:
+            print(f"Error: There were no valid number(s) in column {column} in file: {filename}")
+            exit()
 
-    return (list_values, total_number_of_values)
+    return (list_values, float(total_number_of_values))
 
 
 def calculate_average(numbers:list)->float:
     # TODO - Complete the function to return the average of the list of numbers
-    total = 0
-    for number in numbers:
-        total += number
-    
-    return total / len(numbers)
+
+    return sum(numbers) / len(numbers)
 
 def get_max_and_min(numbers:list)->tuple[float, float]:
     # TODO - Complete the function to return a tuple with the maximum and minimum
@@ -61,7 +68,7 @@ def calculate_std_dev(numbers:list)->float:
     # TODO - Complete the function to return the standard deviation of the numbers in the list
 
     # Standard deviation is the square root of the variance
-    return math.pow((calculate_variance(numbers)), 0.5)
+    return math.sqrt(calculate_variance(numbers))
 
 def calculate_median(number:list)->float:
     # TODO - Complete the function to return the median of the numbers in the list
